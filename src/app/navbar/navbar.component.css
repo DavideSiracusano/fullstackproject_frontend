@@ -1,0 +1,33 @@
+.navbar {
+  background-color: #3e1e51;
+}
+
+.navbar a {
+  color: aliceblue;
+}
+
+#logout {
+  color: aliceblue;
+}
+
+.navbar .mat-toolbar-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 501px) and (max-width: 728px) {
+  .navbar .mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navbar .mat-toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}

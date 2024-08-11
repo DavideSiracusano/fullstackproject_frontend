@@ -1,0 +1,19 @@
+<div *ngFor="let post of posts" class="edit">
+  <h2>Modifica Post</h2>
+  <form (ngSubmit)="updatePost(post._id, title, content)">
+    <mat-form-field>
+      <label for="title">Titolo</label>
+      <input matInput type="text" id="title" name="title" [(ngModel)]="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <label for="content">Contenuto</label>
+      <textarea
+        matInput
+        id="content"
+        name="content"
+        [(ngModel)]="content"
+      ></textarea>
+    </mat-form-field>
+    <button mat-button type="submit">Salva Modifiche</button>
+  </form>
+</div>

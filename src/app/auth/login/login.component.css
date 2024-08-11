@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  color: #3e1e51;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  color: #3e1e51;
+  font-weight: bold;
+}
+
+#login {
+  border-radius: 15px;
+  background-color: #3e1e51;
+  color: aliceblue;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

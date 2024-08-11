@@ -1,0 +1,30 @@
+<form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="header">
+      <h1>Welcome back!</h1>
+    </div>
+
+    <h2>Register</h2>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="username"
+        placeholder="Enter your name"
+        aria-label="Enter your name"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        aria-label="Enter your password"
+      />
+    </mat-form-field>
+
+    <button id="submit" mat-raised-button type="submit">submit</button>
+  </div>
+</form>

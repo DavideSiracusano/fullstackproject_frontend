@@ -1,0 +1,13 @@
+.edit form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  color: #3e1e51;
+  font-weight: bold;
+}

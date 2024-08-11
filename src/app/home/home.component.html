@@ -1,0 +1,106 @@
+<div class="home-container">
+  <h1 class="fade-in">
+    Write your ideas! <mat-icon id="emoji">sentiment_satisfied</mat-icon>
+  </h1>
+  <h4 class="fade-in">
+    Here you can write your ideas, find common perspectives with others, all
+    while respecting common rules and ethics.
+  </h4>
+  <span id="warning"> you must first register to post some content!</span>
+  <form (ngSubmit)="addPost()" class="form">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        [(ngModel)]="title"
+        placeholder="Enter your title..."
+        name="title"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea
+        [(ngModel)]="content"
+        matInput
+        placeholder="Enter your content..."
+        name="content"
+      >
+      </textarea>
+      <button mat-button type="submit">Add Post</button>
+    </mat-form-field>
+  </form>
+
+  <div *ngFor="let post of posts" class="post">
+    <button
+      [ngClass]="{ 'disabled-button': post.userID._id !== getCurrentUser() }"
+      class="delete"
+      mat-button
+      type="button"
+      (click)="deletePost(post._id)"
+    >
+      <mat-icon>delete</mat-icon>Delete Post
+    </button>
+    <button
+      *ngIf="post.userID._id === getCurrentUser()"
+      mat-button
+      [routerLink]="['/editPost', post._id]"
+    >
+      <mat-icon>edit</mat-icon>Edit Post
+    </button>
+    <div class="post-header">
+      <span>{{ post.date | date : "short" }}</span>
+      <h5 class="titolo">Author:</h5>
+      <span class="testo">{{ post.username | uppercase }}</span>
+      <h6 class="titolo">Title:</h6>
+      <span class="testo">{{ post.title | uppercase }}</span>
+      <p class="post-content">{{ post.content }}</p>
+    </div>
+
+    <form #postform="ngForm" (ngSubmit)="addComment(post._id)">
+      <mat-form-field class="example-full-width">
+        <textarea
+          matInput
+          [(ngModel)]="commentContent[post._id]"
+          placeholder="Write your comment..."
+          name="commentContent"
+        ></textarea>
+        <button mat-button type="submit">Add Comment</button>
+        <button mat-button type="button" (click)="toggleLike(post)">
+          <mat-icon>thumb_up</mat-icon>
+          {{ post.likes }}
+          <span *ngIf="isLikedByCurrentUserLike(post)">You liked this</span>
+        </button>
+      </mat-form-field>
+    </form>
+
+    <div class="comment-list">
+      <h5>Comments:</h5>
+      <div *ngFor="let comment of post.comments" class="comment">
+        <p class="comment-content">
+          <strong>{{ comment.username }}</strong
+          >: {{ comment.content }}
+          <button
+            mat-button
+            type="button"
+            (click)="toggleCommentLike(post._id, comment._id)"
+          >
+            <mat-icon>thumb_up</mat-icon>
+            {{ comment.likes }}
+            <span *ngIf="isLikedByCurrentUserComment(comment._id)"
+              >You liked this</span
+            >
+          </button>
+          <button
+            class="delete-button"
+            mat-button
+            type="button"
+            (click)="deleteComment(post._id, comment._id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <span>{{ comment.date | date : "short" }}</span>
+        </p>
+      </div>
+    </div>
+
+    <hr />
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="container">
+    <div class="header">
+      <h1>Welcome</h1>
+    </div>
+
+    <h2>Login</h2>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="username"
+        placeholder="Enter your name"
+        aria-label="Enter your name"
+      />
+      <mat-error
+        *ngIf="
+          loginForm.get('username')?.invalid &&
+          loginForm.get('username')?.touched
+        "
+        >write your username
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        aria-label="Enter your password"
+      />
+      <mat-error
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+        >password is required!</mat-error
+      >
+    </mat-form-field>
+
+    <div *ngIf="loginError" class="error-message">
+      Incorrect username or password. Please try again.
+    </div>
+
+    <button id="login" mat-raised-button type="submit">login</button>
+  </div>
+</form>
