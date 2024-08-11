@@ -16,9 +16,12 @@ https://fullstack-7899a.web.app
 ## how it works
 
 It involves having a web application where people can exchange ideas, while respecting ethics and rules.
-You must first register to post some content!.
-You can write a title and a body to add a post, you can insert likes (only one for each post or comment) adn comments the other posts of the community.
-You can also delete your posts or comments and/or update them.
+
+You must first register to post any content.
+
+You can write a title and a body to add a post, and you can insert likes (one for each post or comment) and comments on other posts in the community.
+
+You can also delete or update your posts and comments.
 
 
 
